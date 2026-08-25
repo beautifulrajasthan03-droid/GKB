@@ -25,9 +25,15 @@ jobs:
           flutter-version: '3.19.x'
           channel: 'stable'
 
-      - name: Install dependencies
-        run: flutter pub get
+      - name: Create Flutter Template Structure
+        run: |
+          flutter create . --org com.gkb.app --project-name gkb --platforms android
+
+      - name: Restore pubspec.yaml and main.dart
+        run: |
+          # Flutter create will overwrite files, so we make sure our dependencies and main.dart are intact
+          flutter pub get
 
       - name: Build APK
         run: flutter build apk --release
-        
+
