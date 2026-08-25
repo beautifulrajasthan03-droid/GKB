@@ -28,6 +28,7 @@ jobs:
       - name: Create Flutter Template Structure
         run: |
           flutter create . --org com.gkb.app --project-name gkb --platforms android
+          sed -i 's/minSdkVersion flutter.minSdkVersion/minSdkVersion 21/g' android/app/build.gradle
 
       - name: Restore pubspec.yaml and main.dart
         run: |
@@ -36,4 +37,5 @@ jobs:
 
       - name: Build APK
         run: flutter build apk --release
+
 
